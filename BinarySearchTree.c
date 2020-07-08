@@ -75,25 +75,21 @@ int search(int data)
 int findMax()
 {
     struct Node* travelNode=root;
-    struct Node* secondLastNode;
-    while(travelNode!=NULL)
+    while(travelNode->right!=NULL)
     {
-        secondLastNode=travelNode;
         travelNode=travelNode->right;
     }
-    return secondLastNode->data;
+    return travelNode->data;
 }
 
 int findMin()
 {
     struct Node* travelNode=root;
-    struct Node* secondLastNode;
-    while(travelNode!=NULL)
+    while(travelNode->left!=NULL)
     {
-        secondLastNode=travelNode;
         travelNode=travelNode->left;
     }
-    return secondLastNode->data;
+    return travelNode->data;
 }
 
 int main()
