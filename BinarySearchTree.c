@@ -13,7 +13,7 @@ struct Node* root;
 struct Node* getNode(int data)
 {
     struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
-    newNode->data=NULL;
+    newNode->data=data;
     newNode->left=NULL;
     newNode->right=NULL;
     return newNode;
@@ -72,6 +72,30 @@ int search(int data)
         return 0;
 }
 
+int findMax()
+{
+    struct Node* travelNode=root;
+    struct Node* secondLastNode;
+    while(travelNode!=NULL)
+    {
+        secondLastNode=travelNode;
+        travelNode=travelNode->right;
+    }
+    return secondLastNode->data;
+}
+
+int findMin()
+{
+    struct Node* travelNode=root;
+    struct Node* secondLastNode;
+    while(travelNode!=NULL)
+    {
+        secondLastNode=travelNode;
+        travelNode=travelNode->left;
+    }
+    return secondLastNode->data;
+}
+
 int main()
 {
     root=NULL;
@@ -79,9 +103,14 @@ int main()
     insert(4);
     insert(3);
     insert(7);
+    insert(10);
+    insert(1);
     if(search(7))
-        printf("Element found");
+        printf("Element found\n");
     else
-        printf("Element Not Found");
+        printf("Element Not Found \n");
+
+        printf("Maximum Element %d \n",findMax());
+        printf("Minimum Element %d \n",findMin());
     return 0;
 }
